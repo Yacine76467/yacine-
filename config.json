@@ -1,12 +1,12 @@
 {
-"inbounds": [
+"Google.com": [
 {
-"port": 8080,
+"port":443,
 "protocol": "vless",
 "settings": {
 "clients": [
 {
-"id": "d2cb8181-233c-4d18-9972-8a1b04db7644",
+"id": "d2cb8181-233c-4d18-9972-8a1b04db5344",
 "level": 0
 }
 ],
