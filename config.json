@@ -16,7 +16,7 @@
 
 "id": "d2cb8181-233c-4d18-9972-
 
-8a1b04db8644",
+8a1b04db5544",
 
 "level": 0
 
@@ -39,43 +39,5 @@
 }
 
 }
-
-}
-
-1,
-
-"outbounds": [
-
-{
-
-"protocol": "freedom",
-
-"settings": {}
-
-}
-
-]
-
-}"path": "/nawas"
-
-}
-
-}
-
-}
-
-1,
-
-"outbounds": [
-
-{
-
-"protocol": "freedom",
-
-"settings": {}
-
-}
-
-]
 
 }
