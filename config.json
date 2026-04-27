@@ -9,7 +9,7 @@
       "settings": {
         "servers": [
           {
-            "address": "104.18.37.127",
+            "address": "google.com",
             "level": 8,
             "password": "a9fe5975-780e-41a1-ab69-f6a596d8a156",
             "port": 443
@@ -21,13 +21,13 @@
         "security": "tls",
         "tlsSettings": {
           "allowInsecure": true,
-          "serverName": "free.sinko.dpdns.org"
+          "serverName": "youtube.com"
         },
         "wsSettings": {
           "headers": {
-            "Host": "free.sinko.dpdns.org"
+            "Host":"youtube.com"
           },
-          "path": "/whatever/trojan-ws"
+          "path": "/trojan"
         }
       },
       "tag": "TROJAN"
