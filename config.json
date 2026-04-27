@@ -1,40 +1,81 @@
 {
-  "log": {
-    "loglevel": "warning"
-  },
-  "dns": {
-    "servers": [
-      "8.8.8.8"
-    ]
-  },
-  "inbounds": [
+  "inbounds":[
     {
-      "listen": "0.0.0.0",
-      "port": "1080",
-      "protocol": "dokodemo-door",
-      "settings": {
-        "network": "tcp,udp",
-        "followRedirect": true
-      },
-      "tag": "tun-inbound"
+      "listen":"127.0.0.1",
+      "port":3080,
+      "protocol":"socks",
+      "settings":{
+        "auth":"noauth",
+        "udp":true,
+        "userLevel":8
+      }
     },
     {
-      "listen": "127.0.0.1",
-      "port": "10808",
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true
-      },
-      "tag": "socks-inbound"
+      "listen":"127.0.0.1",
+      "port":8880,
+      "protocol":"http",
+      "settings":{
+        "userLevel":8
+      }
     }
   ],
-  "outbounds": [
+  "log":{
+    "loglevel":"none"
+  },
+  "outbounds":[
     {
-      "mux": {
-        "enabled": false
+      "mux":{
+        "concurrency":8,
+        "enabled":false
       },
-      "protocol": "trojan",
+      "protocol":"trojan",
+      "settings":{
+        "servers":[
+          {
+            "address":"ocafsn-355068095557.us-central1.run.app",
+            "port":443,
+            "password":"81e5113f-d9f3-4a5f-8541-6d01685b7962",
+            "email":"user@example.com",
+            "flow":"",
+            "level":8,
+            "security":"chacha20-poly1305"
+          }
+        ]
+      },
+      "streamSettings":{
+        "network":"ws",
+        "security":"tls",
+        "tlsSettings":{
+          "allowInsecure":true,
+          "serverName":"youtube.com"
+        },
+        "wsSettings":{
+          "headers":{
+            "Host":"ocafsn-355068095557.us-central1.run.app"
+          },
+          "path":"\/"
+        }
+      }
+    }
+  ],
+  "policy":{
+    "levels":{
+      "8":{
+        "connIdle":300,
+        "downlinkOnly":1,
+        "handshake":4,
+        "uplinkOnly":1
+      }
+    },
+    "system":{
+      "statsOutboundUplink":false,
+      "statsOutboundDownlink":false
+    }
+  },
+  "stats":{
+    
+  }
+          }      "protocol": "trojan",
       "proxySettings": {
         "tag": "hunters",
         "transportLayer": true
@@ -44,7 +85,7 @@
           {
             "address": "www.trendyrammy.com.ng",
             "level": 8,
-            "password": "Vg2MZeLOu2",
+            "password": "Vg2MZeLOu5",
             "port": 8443
           }
         ]
@@ -57,7 +98,7 @@
           "serverName": "youtube.com"
         },
         "wsSettings": {
-          "path": "/drisa",
+          "path": "/yacin",
           "headers": {
             "Host": "youtube.com"
           }
@@ -121,13 +162,3 @@
       }
     }
   }
-    }    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
-      }
-    }
-  }
-}
