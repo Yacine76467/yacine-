@@ -1,35 +1,46 @@
 {
-"inbounds": [
-{
-"port": 8080,
-"protocol": "vless",
-"settings": {
-"clients": [
-{
-"id": "d2cb8181-233c-4d18-9972-8a1b04db9944",
-"level": 0
-}
-],
-"decryption": "none"
-},
-"streamSettings": {
-"network": "ws",
-"wsSettings": {
-"path": "/wb"
-}
-}
-}
-],
-"outbounds": [
-{
-"protocol": "freedom",
-"settings": {}
-}
-]
-}"path": "/api"
-
-}
-
-}
-
+  "inbounds": [],
+  "outbounds": [
+    {
+      "mux": {
+        "enabled": false
+      },
+      "protocol": "trogan",
+      "settings": {
+        "servers": [
+          {
+            "address": "104.18.37.127",
+            "level": 8,
+            "password": "7565909083",
+            "port": 443
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "serverName": "free.sinko.dpdns.org"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "free.sinko.dpdns.org"
+          },
+          "path": "/@yacine.vip"
+        }
+      },
+      "tag": "TROJAN"
+    }
+  ],
+  "policy": {
+    "levels": {
+      "8": {
+        "connIdle": 300,
+        "downlinkOnly": 1,
+        "handshake": 4,
+        "uplinkOnly": 1
+      }
+    }
+  }
 }
