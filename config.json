@@ -1,164 +1,52 @@
 {
-  "inbounds":[
-    {
-      "listen":"127.0.0.1",
-      "port":3080,
-      "protocol":"socks",
-      "settings":{
-        "auth":"noauth",
-        "udp":true,
-        "userLevel":8
-      }
-    },
-    {
-      "listen":"127.0.0.1",
-      "port":8880,
-      "protocol":"http",
-      "settings":{
-        "userLevel":8
-      }
-    }
-  ],
-  "log":{
-    "loglevel":"none"
-  },
-  "outbounds":[
-    {
-      "mux":{
-        "concurrency":8,
-        "enabled":false
-      },
-      "protocol":"trojan",
-      "settings":{
-        "servers":[
-          {
-            "address":"ocafsn-355068095557.us-central1.run.app",
-            "port":443,
-            "password":"81e5113f-d9f3-4a5f-8541-6d01685b7962",
-            "email":"user@example.com",
-            "flow":"",
-            "level":8,
-            "security":"chacha20-poly1305"
-          }
-        ]
-      },
-      "streamSettings":{
-        "network":"ws",
-        "security":"tls",
-        "tlsSettings":{
-          "allowInsecure":true,
-          "serverName":"youtube.com"
-        },
-        "wsSettings":{
-          "headers":{
-            "Host":"ocafsn-355068095557.us-central1.run.app"
-          },
-          "path":"\/"
-        }
-      }
-    }
-  ],
-  "policy":{
-    "levels":{
-      "8":{
-        "connIdle":300,
-        "downlinkOnly":1,
-        "handshake":4,
-        "uplinkOnly":1
-      }
-    },
-    "system":{
-      "statsOutboundUplink":false,
-      "statsOutboundDownlink":false
-    }
-  },
-  "stats":{
-    
-  }
-          }      "protocol": "trojan",
-      "proxySettings": {
-        "tag": "hunters",
-        "transportLayer": true
-      },
-      "settings": {
-        "servers": [
-          {
-            "address": "www.trendyrammy.com.ng",
-            "level": 8,
-            "password": "Vg2MZeLOu5",
-            "port": 8443
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": true,
-          "serverName": "youtube.com"
-        },
-        "wsSettings": {
-          "path": "/yacin",
-          "headers": {
-            "Host": "youtube.com"
-          }
-        }
-      },
-      "tag": "TROJAN"
-    },
-    {
-      "domainStrategy": "AsIs",
-      "protocol": "http",
-      "settings": {
-        "servers": [
-          {
-            "address": "157.240.196.32",
-            "port": 8080
-          }
-        ],
-        "headers": {
-          "Host": "youtube.com:443",
-          "Proxy-Connection": "keep-alive",
-          "User-Agent": "Mozilla/5.0 (Linux; Android 14; SM-A245F Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/133.0.6943.122 Mobile Safari/537.36 [FBAN/InternetOrgApp;FBAV/166.0.0.0.169;]",
-          "X-iorg-bsid": "@hunters"
-        }
-      },
-      "tag": "hunters"
-    },
-    {
-      "protocol": "freedom",
-      "tag": "direct"
-    },
-    {
-      "protocol": "blackhole",
-      "tag": "block"
-    }
-  ],
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
-      {
-        "type": "field",
-        "protocol": ["dns"],
-        "outboundTag": "direct"
-      },
-      {
-        "type": "field",
-        "inboundTag": [
-          "tun-inbound",
-          "socks-inbound"
-        ],
-        "outboundTag": "TROJAN"
-      }
-    ]
-  },
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
-      }
-    }
-  }
+  "inbounds": [],
+  "outbounds": [
+    {
+      "mux": {
+        "enabled": true
+      },
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "crazygames.ro",
+            "port": 443,
+            "users": [
+              {
+                "alterId": 0,
+                "id": "03fcc618-b93d-6796-6aed-8a38c975d591",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "serverName": "tg-ahmed2003xx.site"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "tg-ahmed2003xx.site"
+          },
+          "path": "/yacine"
+        }
+      },
+      "tag": "VMESS"
+    }
+  ],
+  "policy": {
+    "levels": {
+      "8": {
+        "connIdle": 300,
+        "downlinkOnly": 1,
+        "handshake": 4,
+        "uplinkOnly": 1
+      }
+    }
+  }
+}
