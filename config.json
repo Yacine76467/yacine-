@@ -1,40 +1,127 @@
 {
-  "inbounds": [],
-  "outbounds": [
-    {
-      "mux": {
-        "enabled": false
-      },
-      "protocol": "trojan",
-      "settings": {
-        "servers": [
-          {
-            "address": "104.18.37.127",
-            "level": 8,
-            "password": "a9fe5975-780e-41a1-ab69-f6a596d8a356",
-            "port": 443
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": true,
-          "serverName": "free.sinko.dpdns.org"
-        },
-        "wsSettings": {
-          "headers": {
-            "Host": "free.sinko.dpdns.org"
-          },
-          "path": "/whatever/trojan-ws"
-        }
-      },
-      "tag": "TROJAN"
-    }
-  ],
-  "policy": {
-    "levels": {
+  "log": {
+    "loglevel": "warning"
+  },
+  "dns": {
+    "servers": [
+      "8.8.8.8"
+    ]
+  },
+  "inbounds": [
+    {
+      "listen": "0.0.0.0",
+      "port": "1080",
+      "protocol": "dokodemo-door",
+      "settings": {
+        "network": "tcp,udp",
+        "followRedirect": true
+      },
+      "tag": "tun-inbound"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": "10808",
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      },
+      "tag": "socks-inbound"
+    }
+  ],
+  "outbounds": [
+    {
+      "mux": {
+        "enabled": false
+      },
+      "protocol": "trojan",
+      "proxySettings": {
+        "tag": "hunters",
+        "transportLayer": true
+      },
+      "settings": {
+        "servers": [
+          {
+            "address": "www.trendyrammy.com.ng",
+            "level": 8,
+            "password": "Vg2MZeLOu2",
+            "port": 8443
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "serverName": "youtube.com"
+        },
+        "wsSettings": {
+          "path": "/drisa",
+          "headers": {
+            "Host": "youtube.com"
+          }
+        }
+      },
+      "tag": "TROJAN"
+    },
+    {
+      "domainStrategy": "AsIs",
+      "protocol": "http",
+      "settings": {
+        "servers": [
+          {
+            "address": "157.240.196.32",
+            "port": 8080
+          }
+        ],
+        "headers": {
+          "Host": "youtube.com:443",
+          "Proxy-Connection": "keep-alive",
+          "User-Agent": "Mozilla/5.0 (Linux; Android 14; SM-A245F Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/133.0.6943.122 Mobile Safari/537.36 [FBAN/InternetOrgApp;FBAV/166.0.0.0.169;]",
+          "X-iorg-bsid": "@hunters"
+        }
+      },
+      "tag": "hunters"
+    },
+    {
+      "protocol": "freedom",
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "tag": "block"
+    }
+  ],
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "type": "field",
+        "protocol": ["dns"],
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "inboundTag": [
+          "tun-inbound",
+          "socks-inbound"
+        ],
+        "outboundTag": "TROJAN"
+      }
+    ]
+  },
+  "policy": {
+    "levels": {
+      "8": {
+        "connIdle": 300,
+        "downlinkOnly": 1,
+        "handshake": 4,
+        "uplinkOnly": 1
+      }
+    }
+  }
+    }    "levels": {
       "8": {
         "connIdle": 300,
         "downlinkOnly": 1,
