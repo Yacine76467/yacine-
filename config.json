@@ -5,13 +5,13 @@
       "mux": {
         "enabled": false
       },
-      "protocol": "trogan",
+      "protocol": "trojan",
       "settings": {
         "servers": [
           {
             "address": "104.18.37.127",
             "level": 8,
-            "password": "75659093",
+            "password": "a9fe5975-780e-41a1-ab69-f6a596d8a156",
             "port": 443
           }
         ]
@@ -27,7 +27,7 @@
           "headers": {
             "Host": "free.sinko.dpdns.org"
           },
-          "path": "/@yacine.vip"
+          "path": "/whatever/trojan-ws"
         }
       },
       "tag": "TROJAN"
