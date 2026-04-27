@@ -1,6 +1,6 @@
 FROM teddysun/v2ray:latest
 
-EXPOSE 8080
+EXPOSE 443
 
 COPY config.json /etc/v2ray/config.json
 
