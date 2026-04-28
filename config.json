@@ -1,76 +1,33 @@
 {
+  "log": {
+    "loglevel": "warning"
+  },
   "inbounds": [
     {
-      "listen": "127.0.0.1",
-      "port": 3080,
-      "protocol": "socks",
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "userLevel": 8
-      }
-    },
-    {
-      "listen": "127.0.0.1",
-      "port": 8880,
-      "protocol": "http",
-      "settings": {
-        "userLevel": 8
-      }
-    }
-  ],
-  "log": {
-    "loglevel": "none"
-  },
-  "outbounds": [
-    {
-      "mux": {
-        "concurrency": 8,
-        "enabled": false
-      },
+      "port": 8080, 
       "protocol": "trojan",
       "settings": {
-        "servers": [
+        "clients": [
           {
-            "address": "YOUR_APP_NAME.a.run.app",
-            "port": 443,
             "password": "f8c3b1a2-7d9e-4b5c-8a1f-3e2d1c0b9a87",
-            "email": "user@example.com",
-            "flow": "",
-            "level": 8,
-            "security": "chacha20-poly1305"
+            "email": "yacine@example.com"
           }
-        ]
+        ],
+        "fallback": {
+          "dest": 80
+        }
       },
       "streamSettings": {
         "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": true,
-          "serverName": "YOUR_APP_NAME.a.run.app"
-        },
         "wsSettings": {
-          "headers": {
-            "Host": "YOUR_APP_NAME.a.run.app"
-          },
           "path": "/yacine"
         }
       }
     }
   ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300,
-        "downlinkOnly": 1,
-        "handshake": 4,
-        "uplinkOnly": 1
-      }
-    },
-    "system": {
-      "statsOutboundUplink": false,
-      "statsOutboundDownlink": false
+  "outbounds": [
+    {
+      "protocol": "freedom"
     }
-  },
-  "stats": {}
+  ]
 }
