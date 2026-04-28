@@ -32,9 +32,9 @@
       "settings": {
         "servers": [
           {
-            "address": "google.com",
+            "address": "YOUR_APP_NAME.a.run.app",
             "port": 443,
-            "password": "8f57b5e8-18eb-4d2b-b311-d50ee3088763",
+            "password": "f8c3b1a2-7d9e-4b5c-8a1f-3e2d1c0b9a87",
             "email": "user@example.com",
             "flow": "",
             "level": 8,
@@ -47,13 +47,13 @@
         "security": "tls",
         "tlsSettings": {
           "allowInsecure": true,
-          "serverName": "api.safaricom.et"
+          "serverName": "YOUR_APP_NAME.a.run.app"
         },
         "wsSettings": {
           "headers": {
-            "Host": "cnwo-ws-835451571473.us-west1.run.app"
+            "Host": "YOUR_APP_NAME.a.run.app"
           },
-          "path": "\/"
+          "path": "/yacine"
         }
       }
     }
@@ -72,7 +72,5 @@
       "statsOutboundDownlink": false
     }
   },
-  "stats": {
-    
-  }
+  "stats": {}
 }
