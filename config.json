@@ -4,18 +4,15 @@
   },
   "inbounds": [
     {
-      "port": 8080, 
+      "port": 8080,
       "protocol": "trojan",
       "settings": {
         "clients": [
           {
-            "password": "f8c3b1a2-7d9e-4b5c-8a1f-3e2d1c0b9a87",
-            "email": "yacine@example.com"
+            "password": "yacine-pass-2024-secure-token",
+            "email": "yacine@cloud.com"
           }
-        ],
-        "fallback": {
-          "dest": 80
-        }
+        ]
       },
       "streamSettings": {
         "network": "ws",
