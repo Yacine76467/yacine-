@@ -1,40 +1,19 @@
 {
-  "inbounds": [],
-  "outbounds": [
+  "log": { "loglevel": "warning" },
+  "inbounds": [
     {
+      "port": 8080,
       "protocol": "trojan",
       "settings": {
-        "servers": [
-          {
-            "address": "YACINE_URL.a.run.app",
-            "port": 443,
-            "password": "yacine-pass-2024-secure-token",
-            "level": 8
-          }
+        "clients": [
+          { "password": "yacine-pass-2024-secure-token" }
         ]
       },
       "streamSettings": {
         "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": true,
-          "serverName": "YACINE_URL.a.run.app"
-        },
-        "wsSettings": {
-          "headers": {
-            "Host": "YACINE_URL.a.run.app"
-          },
-          "path": "/yacine"
-        }
-      },
-      "tag": "MY_PRIVATE_TROJAN"
-    }
-  ],
-  "policy": {
-    "levels": {
-      "8": {
-        "connIdle": 300
+        "wsSettings": { "path": "/yacine" }
       }
     }
-  }
+  ],
+  "outbounds": [{ "protocol": "freedom" }]
 }
