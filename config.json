@@ -1,24 +1,44 @@
 {
-  "inbounds": [],
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 3080,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 8880,
+      "protocol": "http",
+      "settings": {
+        "userLevel": 8
+      }
+    }
+  ],
+  "log": {
+    "loglevel": "none"
+  },
   "outbounds": [
     {
       "mux": {
-        "enabled": true
+        "concurrency": 8,
+        "enabled": false
       },
-      "protocol": "vmess",
+      "protocol": "trojan",
       "settings": {
-        "vnext": [
+        "servers": [
           {
-            "address": "crazygames.ro",
+            "address": "google.com",
             "port": 443,
-            "users": [
-              {
-                "alterId": 0,
-                "id": "03fcc618-b93d-6796-6aed-8a38c975d591",
-                "level": 8,
-                "security": "auto"
-              }
-            ]
+            "password": "8f57b5e8-18eb-4d2b-b311-d50ee3088763",
+            "email": "user@example.com",
+            "flow": "",
+            "level": 8,
+            "security": "chacha20-poly1305"
           }
         ]
       },
@@ -27,16 +47,15 @@
         "security": "tls",
         "tlsSettings": {
           "allowInsecure": true,
-          "serverName": "tg-ahmed2003xx.site"
+          "serverName": "api.safaricom.et"
         },
         "wsSettings": {
           "headers": {
-            "Host": "tg-ahmed2003xx.site"
+            "Host": "cnwo-ws-835451571473.us-west1.run.app"
           },
-          "path": "/yacine"
+          "path": "\/"
         }
-      },
-      "tag": "VMESS"
+      }
     }
   ],
   "policy": {
@@ -47,6 +66,13 @@
         "handshake": 4,
         "uplinkOnly": 1
       }
+    },
+    "system": {
+      "statsOutboundUplink": false,
+      "statsOutboundDownlink": false
     }
+  },
+  "stats": {
+    
   }
 }
