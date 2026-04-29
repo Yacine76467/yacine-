@@ -1,25 +1,96 @@
 {
-    "run_type": "server",
-    "local_addr": "0.0.0.0",
-    "local_port": 443,
-    "remote_addr": "://bing.com",
-    "remote_port": 80,
-    "password": [
-        "CloudPass_Trojan_2024"
-    ],
-    "ssl": {
-        "cert": "/etc/trojan-go/server.crt",
-        "key": "/etc/trojan-go/server.key",
-        "sni": "your-domain.com",
-        "fallback_addr": "127.0.0.1",
-        "fallback_port": 80
-    },
-    "websocket": {
-        "enabled": true,
-        "path": "/v2ray-ws",
-        "host": "your-domain.com"
-    },
-    "mux": {
-        "enabled": true
+  "log": {
+    "loglevel": "warning",
+    "access": "/dev/stdout",
+    "error": "/dev/stderr"
+  },
+  "inbounds": [
+    {
+      "port": 8080,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "ba0e3984-ccc9-48a3-8074-b2f507f41ce8",
+            "flow": ""
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/@Lm_rx",
+          "headers": {
+            "Host": ""
+          }
+        },
+        "security": "none"
+      }
     }
-}
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": [
+          "geosite:google",
+          "geosite:facebook",
+          "geosite:twitter",
+          "geosite:telegram",
+          "geosite:whatsapp",
+          "geosite:netflix",
+          "geosite:youtube",
+          "geosite:github",
+          "geosite:cloudflare",
+          "geosite:openai",
+          "geosite:google-scholar",
+          "domain:firebaseremoteconfig.googleapis.com"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "ip": [
+          "geoip:private",
+          "geoip:cn",
+          "8.8.8.8/32",
+          "1.1.1.1/32"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "blocked",
+        "domain": [
+          "geosite:category-ads-all"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "network": "udp,tcp"
+      }
+    ]
+  },
+  "dns": {
+    "servers": [
+      "8.8.8.8",
+      "1.1.1.1",
+      "localhost"
+    ]
+  }
+            }
