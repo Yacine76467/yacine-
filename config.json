@@ -1,19 +1,25 @@
 {
-  "log": { "loglevel": "warning" },
-  "inbounds": [
-    {
-      "port": 8080,
-      "protocol": "trojan",
-      "settings": {
-        "clients": [
-          { "password": "yacine-pass-2024-secure-token" }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": { "path": "/yacine" }
-      }
+    "run_type": "server",
+    "local_addr": "0.0.0.0",
+    "local_port": 443,
+    "remote_addr": "://bing.com",
+    "remote_port": 80,
+    "password": [
+        "CloudPass_Trojan_2024"
+    ],
+    "ssl": {
+        "cert": "/etc/trojan-go/server.crt",
+        "key": "/etc/trojan-go/server.key",
+        "sni": "your-domain.com",
+        "fallback_addr": "127.0.0.1",
+        "fallback_port": 80
+    },
+    "websocket": {
+        "enabled": true,
+        "path": "/v2ray-ws",
+        "host": "your-domain.com"
+    },
+    "mux": {
+        "enabled": true
     }
-  ],
-  "outbounds": [{ "protocol": "freedom" }]
 }
