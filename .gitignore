@@ -1,6 +1,0 @@
-server.crt
-server.key
-certs/
-*.log
-.DS_Store
-
