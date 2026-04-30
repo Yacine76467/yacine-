@@ -1,96 +1,37 @@
 {
-  "log": {
-    "loglevel": "warning",
-    "access": "/dev/stdout",
-    "error": "/dev/stderr"
-  },
-  "inbounds": [
-    {
-      "port": 8080,
-      "protocol": "vless",
-      "settings": {
-        "clients": [
-          {
-            "id": "ba0e3984-ccc9-48a3-8074-b2f507f41ce8",
-            "flow": ""
-          }
-        ],
-        "decryption": "none"
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "path": "/@Lm_rx",
-          "headers": {
-            "Host": ""
-          }
-        },
-        "security": "none"
-      }
+  "type": "SSH",
+  "name": "Yacine_Tunnel",
+  "sshTunnelConfig": {
+    "injectConfig": {
+      "enabled": true,
+      "mode": "PROXY_SNI"
     }
-  ],
-  "outbounds": [
-    {
-      "protocol": "freedom",
-      "settings": {},
-      "tag": "direct"
+  },
+  "encryptedLockedConfig": {
+    "LockedAppConfig": {
+      "VersionCode": 32,
+      "VersionName": "1.0.26",
+      "ConnectedMessage": "Connected by Yacine",
+      "TunnelType": "SSH",
+      "IsSshLocked": true
     },
-    {
-      "protocol": "blackhole",
-      "settings": {},
-      "tag": "blocked"
-    }
-  ],
-  "routing": {
-    "domainStrategy": "IPIfNonMatch",
-    "rules": [
-      {
-        "type": "field",
-        "outboundTag": "direct",
-        "domain": [
-          "geosite:google",
-          "geosite:facebook",
-          "geosite:twitter",
-          "geosite:telegram",
-          "geosite:whatsapp",
-          "geosite:netflix",
-          "geosite:youtube",
-          "geosite:github",
-          "geosite:cloudflare",
-          "geosite:openai",
-          "geosite:google-scholar",
-          "domain:firebaseremoteconfig.googleapis.com"
-        ]
+    "EncryptedLockedConfig": {
+      "InjectConfig": {
+        "IsEncrypted": false,
+        "EncryptedMode": "PROXY_SNI",
+        "EncryptedProxyHost": "YOUR_DOMAIN_HERE",
+        "EncryptedProxyPort": "80",
+        "EncryptedServerNameIndication": "YOUR_DOMAIN_HERE",
+        "EncryptedPayload": "GET / HTTP/1.1[crlf]Host: YOUR_DOMAIN_HERE[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: Websocket[crlf][crlf]"
       },
-      {
-        "type": "field",
-        "outboundTag": "direct",
-        "ip": [
-          "geoip:private",
-          "geoip:cn",
-          "8.8.8.8/32",
-          "1.1.1.1/32"
-        ]
-      },
-      {
-        "type": "field",
-        "outboundTag": "blocked",
-        "domain": [
-          "geosite:category-ads-all"
-        ]
-      },
-      {
-        "type": "field",
-        "outboundTag": "direct",
-        "network": "udp,tcp"
+      "SshConfig": {
+        "IsEncrypted": false,
+        "IsLocked": true,
+        "EncryptedHost": "YOUR_DOMAIN_HERE",
+        "EncryptedPort": "80",
+        "EncryptedUsername": "yacine",
+        "EncryptedPassword": "yacine100"
       }
-    ]
-  },
-  "dns": {
-    "servers": [
-      "8.8.8.8",
-      "1.1.1.1",
-      "localhost"
-    ]
+    }
   }
-            }
+}
