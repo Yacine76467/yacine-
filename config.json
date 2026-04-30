@@ -1,43 +1,45 @@
 {
-  "type": "SSH",
-  "name": "android",
-  "sshTunnelConfig": {
-    "injectConfig": {
-      "enabled": true,
-      "mode": "PROXY_SNI"
+  "inbounds": [],
+  "outbounds": [
+    {
+      "mux": {
+        "enabled": false
+      },
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "google.com",
+            "level": 8,
+            "password": "15684728",
+            "port": 443
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "serverName": "google.com"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "google.com"
+          },
+          "path": "/yacine"
+        }
+      },
+      "tag": "TROJAN_TAG"
     }
-  },
-  "encryptedLockedConfig": {
-    "LockedAppConfig": {
-      "VersionCode": 32,
-      "VersionName": "1.0.26",
-      "ConnectedMessage": "@Bakys",
-      "ExpiredAtTimestamp": 0,
-      "TunnelType": "SSH",
-      "IsSshLocked": true
-    },
-    "EncryptedLockedConfig": {
-      "InjectConfig": {
-        "IsEncrypted": true,
-        "EncryptedMode": "PROXY_SNI",
-        "EncryptedProxyHost": "youtube.com",
-        "EncryptedProxyPort": "443",
-        "EncryptedServerNameIndication": "youtube.com",
-        "EncryptedPayload": "GET / HTTP/1.1[crlf]Host: new-927775848678.europe-west1.run.app[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: Websocket[crlf][crlf]",
-        "EncryptedDnsttDnsHost": "1.1.1.1",
-        "EncryptedDnsttDnsPort": "53"
-      },
-      "SshConfig": {
-        "IsEncrypted": true,
-        "IsLocked": true,
-        "EncryptedHost": "localhost",
-        "EncryptedPort": "22",
-        "EncryptedUsername": "heli",
-        "EncryptedPassword": "heli100"
-      },
-      "V2RayConfig": {
-        "IsEncrypted": true,
-        "EncryptedConfig": []
+  ],
+  "policy": {
+    "levels": {
+      "8": {
+        "connIdle": 300,
+        "downlinkOnly": 1,
+        "handshake": 4,
+        "uplinkOnly": 1
       }
     }
   }
