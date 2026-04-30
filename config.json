@@ -1,6 +1,6 @@
 {
   "type": "SSH",
-  "name": "Yacine_Tunnel",
+  "name": "Yacine_Cloud",
   "sshTunnelConfig": {
     "injectConfig": {
       "enabled": true,
@@ -11,7 +11,7 @@
     "LockedAppConfig": {
       "VersionCode": 32,
       "VersionName": "1.0.26",
-      "ConnectedMessage": "Connected by Yacine",
+      "ConnectedMessage": "Connected to Cloud Run",
       "TunnelType": "SSH",
       "IsSshLocked": true
     },
@@ -19,16 +19,16 @@
       "InjectConfig": {
         "IsEncrypted": false,
         "EncryptedMode": "PROXY_SNI",
-        "EncryptedProxyHost": "YOUR_DOMAIN_HERE",
-        "EncryptedProxyPort": "80",
-        "EncryptedServerNameIndication": "YOUR_DOMAIN_HERE",
-        "EncryptedPayload": "GET / HTTP/1.1[crlf]Host: YOUR_DOMAIN_HERE[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: Websocket[crlf][crlf]"
+        "EncryptedProxyHost": "zohairg-330815531864.europe-west4.run.app",
+        "EncryptedProxyPort": "443",
+        "EncryptedServerNameIndication": "zohairg-330815531864.europe-west4.run.app",
+        "EncryptedPayload": "GET / HTTP/1.1[crlf]Host: zohairg-330815531864.europe-west4.run.app[crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: Websocket[crlf][crlf]"
       },
       "SshConfig": {
         "IsEncrypted": false,
         "IsLocked": true,
-        "EncryptedHost": "YOUR_DOMAIN_HERE",
-        "EncryptedPort": "80",
+        "EncryptedHost": "zohairg-330815531864.europe-west4.run.app",
+        "EncryptedPort": "443",
         "EncryptedUsername": "yacine",
         "EncryptedPassword": "yacine100"
       }
